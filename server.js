@@ -21,12 +21,15 @@ app.use(cors());
 // Set static folder
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Swagger
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpecs = require('./config/swagger');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+
 
 // Mount routers
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/contracts', require('./routes/contractRoutes'));
-app.use('/api/ai', require('./routes/aiRoutes'));
-app.use('/api/catalog', require('./routes/catalogRoutes'));
 app.use('/api/dashboard', require('./routes/dashboardRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
 app.use('/api/master-data', require('./routes/masterDataRoutes'));
