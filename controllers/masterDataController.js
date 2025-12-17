@@ -4,7 +4,8 @@ const {
     MasterDataSoftware,
     MasterDataStatus,
     MasterDataContractType,
-    MasterDataUnit
+    MasterDataUnit,
+    MasterDataPersonnel // Imported
 } = require('../models');
 const { logAction } = require('../utils/logger');
 
@@ -16,7 +17,8 @@ const getMasterDataModel = (type) => {
         'software': MasterDataSoftware,
         'status': MasterDataStatus,
         'contract-types': MasterDataContractType,
-        'units': MasterDataUnit
+        'units': MasterDataUnit,
+        'personnel': MasterDataPersonnel // Mapped
     };
     return models[type];
 };
